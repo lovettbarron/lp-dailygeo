@@ -8,6 +8,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , sax = require('sax')
+  , crypto = require('crypto')
   , request = require('request')
   , xml = require('xml2js')
   , cron = require('cron').CronJob;
@@ -66,9 +67,9 @@ var cronJob = new cron('00 30 11 * * 1-7', function() {
 }, null, true );
 
 // Etag stuffs
-function makeEtag(data) {
+function makeEtag() {
 	var hash = crypto.createHash('md5');
-    hash.update(s);
+    hash.update(new Date().toUTCString());
     return hash.digest('hex');
 }
 
@@ -79,7 +80,7 @@ app.get('/', function(req,res) {
 });
 
 app.get('/edition', function(req,res) {
-	res.set('ETag', makeEtag(new Date()));
+	res.set('ETag', makeEtag());
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 

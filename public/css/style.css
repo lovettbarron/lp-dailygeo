@@ -12,7 +12,9 @@ h1 {
 }
 
 img {
+	margin: 0; padding: 0;
 	width: 90%;
+	max-width: 384px;
 	height: auto;
 }
 

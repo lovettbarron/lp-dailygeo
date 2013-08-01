@@ -11,5 +11,6 @@
     , "sax" : "*"
     , "request" : "*"
     , "xml2js": "*"
+    , "node-cron": "*"
   }
 }

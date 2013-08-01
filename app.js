@@ -65,16 +65,26 @@ var cronJob = new cron('00 30 11 * * 1-7', function() {
 	getFeed();
 }, null, true );
 
+// Etag stuffs
+function makeEtag(data) {
+	var hash = crypto.createHash('md5');
+    hash.update(s);
+    return hash.digest('hex');
+}
+
+
 // Routes
 app.get('/', function(req,res) {
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 
 app.get('/edition', function(req,res) {
+	res.set('ETag', makeEtag(new Date()))
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 
 app.get('/sample', function(req,res) {
+	res.set('ETag', makeEtag(new Date()))
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 

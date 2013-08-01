@@ -2,6 +2,38 @@ doctype 5
 html
 	head
 		title= title
-		link(rel='stylesheet', href='/css/style.css')
+		
+		style(type='text/css')
+			body {
+					margin: 0; padding: 0;
+					border: 0;
+					width: 384px;
+					font-size: 24px;
+					font: 14px "Octin College", Helvetica, Arial, sans-serif;
+					text-align: center;
+				}
+
+				h1 {
+					text-align: center;
+				}
+
+				img {
+					margin: 0; padding: 0;
+					width: 100%;
+					max-width: 364px;
+					height: auto;
+				}
+
+
+				p {
+					width: 100%;
+					float: left;
+					clear: both;
+					text-align: center;
+				}
+
+				.page { 
+					width: 384px;
+				}
 	body
 		block content

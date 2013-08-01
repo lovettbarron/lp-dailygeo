@@ -40,7 +40,7 @@ var parser = new xml.Parser();
 
 parser.on('end', function(result) {
 	var item = JSON.stringify(result.rss.channel[0].item[0].description); // If something breaks, it's this
-	geoTitle = item.match("#[0-9]+\s[a-z]+\s") ? item.match("#[0-9]+\s[a-z]+\s")[0] : '' ; // This probably doesn't work.
+	geoTitle = item.match("#[0-9]+ ?[a-zA-Z0-9]+") ? item.match("#[0-9]+ ?[a-zA-Z0-9]+")[0] : '' ; // This probably doesn't work.]
 	geoURL = item.match("http://.*/(.*?).(jpe?g|gif|png)")[0]; // I'm sorry
 	console.log(geoTitle + " " + geoURL);
 });

@@ -79,12 +79,11 @@ app.get('/', function(req,res) {
 });
 
 app.get('/edition', function(req,res) {
-	res.set('ETag', makeEtag(new Date()))
+	res.set('ETag', makeEtag(new Date()));
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 
 app.get('/sample', function(req,res) {
-	res.set('ETag', makeEtag(new Date()))
 	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 });
 

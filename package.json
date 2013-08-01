@@ -9,5 +9,7 @@
     "express": "3.3.4"
     , "jade": "*"
     , "sax" : "*"
+    , "request" : "*"
+    , "xml2js": "*"
   }
 }

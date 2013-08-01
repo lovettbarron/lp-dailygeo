@@ -7,5 +7,5 @@ exports.sample = function(req, res){
 };
 
 exports.edition = function(req, res){
-  res.render('index', { title: 'Edition' });
+  res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
 };

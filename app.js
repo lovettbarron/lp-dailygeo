@@ -7,9 +7,13 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , sax = require('sax');
+  , sax = require('sax')
+  , request = require('request')
+  , xml = require('xml2js');
 
 var app = express();
+
+var geoURL = geoTitle = '';
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,11 +33,36 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// Set up the parser
+var parser = new xml.Parser();
 
-app.get('/edition', routes.edition);
+parser.on('end', function(result) {
+	var item = JSON.stringify(result.rss.channel[0].item[0].description); // If something breaks, it's this
+	geoTitle = item.match("#[0-9]+\s[a-z]+\s") ? item.match("#[0-9]+\s[a-z]+\s")[0] : '' ; // This probably doesn't work.
+	geoURL = item.match("http://.*/(.*?).(jpe?g|gif|png)")[0]; // I'm sorry
+	console.log(geoTitle + " " + geoURL);
+});
 
-app.get('/sample', routes.sample);
+
+// Then get the feed
+request('http://geometrydaily.tumblr.com/rss', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+     parser.parseString(body);
+  }
+});
+
+// Routes
+app.get('/', function(req,res) {
+	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
+});
+
+app.get('/edition', function(req,res) {
+	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
+});
+
+app.get('/sample', function(req,res) {
+	res.render('index', { imgTitle: geoTitle, imgPath: geoURL });
+});
 
 // app.post('/validate_config', routes.validate);
 

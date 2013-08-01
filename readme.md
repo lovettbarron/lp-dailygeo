@@ -7,5 +7,5 @@ I basically took the awesome, awesome work by @tilman at http://geometrydaily.tu
 - If you want to dither an image, use `class='dither'` to do so. It makes a nice effect.
 - The etag thing is weird and I'm not doing it properly.
 
-![print](https://raw.github.com/readywater/lp-dailygeo/master/public/img/print.png)
 ![screen](https://raw.github.com/readywater/lp-dailygeo/master/public/img/screen.png)
+![print](https://raw.github.com/readywater/lp-dailygeo/master/public/img/print.jpg)

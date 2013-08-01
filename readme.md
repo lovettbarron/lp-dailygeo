@@ -1,6 +1,6 @@
-# Daily Geometry Feed for the Little Printer
+# Daily Geometry for Little Printer
 
-I basically took the awesome, awesome work by @tilman at http://geometrydaily.tumblr.com/ and made a feed for it.
+I basically took the awesome, awesome work by @tilman at http://geometrydaily.tumblr.com/ and made a feed for it. I wanted a quick project to learn how the thing worked, and I got what I wanted.
 
 ### A few quick lessons
 - The Little Printer API doesn't seem to parse external CSS files. It's a pain. Embed them like I did in `views/layout.jade`

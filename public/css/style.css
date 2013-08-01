@@ -13,7 +13,7 @@ h1 {
 
 img {
 	margin: 0; padding: 0;
-	width: 90%;
+	width: 100%;
 	max-width: 384px;
 	height: auto;
 }
@@ -24,4 +24,8 @@ p {
 	float: left;
 	clear: both;
 	text-align: center;
+}
+
+.page { 
+	width: 384px;
 }

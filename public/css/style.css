@@ -14,3 +14,11 @@ img {
 	width: 384px;
 	height: auto;
 }
+
+
+p {
+	width: 100%;
+	float: left;
+	clear: both;
+	text-align: center;
+}

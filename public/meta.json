@@ -1,0 +1,10 @@
+{
+  "owner_email":"andrew@relaystudio.com",
+  "publication_api_version":"1.0",
+  "name": "Daily Geometry Feed",
+  "description": "Posts from the fantastic http://geometrydaily.tumblr.com",
+  "delivered_on":"every day",
+  "external_configuration": false,
+  "send_timezone_info": false,
+  "send_delivery_count": false
+}

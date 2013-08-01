@@ -9,7 +9,8 @@ var express = require('express')
   , path = require('path')
   , sax = require('sax')
   , request = require('request')
-  , xml = require('xml2js');
+  , xml = require('xml2js')
+  , cron = require('cron').CronJob;
 
 var app = express();
 
@@ -45,11 +46,24 @@ parser.on('end', function(result) {
 
 
 // Then get the feed
-request('http://geometrydaily.tumblr.com/rss', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-     parser.parseString(body);
-  }
-});
+// request('http://geometrydaily.tumblr.com/rss', function (error, response, body) {
+//   if (!error && response.statusCode == 200) {
+//      parser.parseString(body);
+//   }
+// });
+function getFeed() {
+	request('http://geometrydaily.tumblr.com/rss', function (error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	     parser.parseString(body);
+	  }
+	});
+}
+
+getFeed();
+
+var cronJob = new cron('00 30 11 * * 1-7', function() {
+	getFeed();
+}, null, true );
 
 // Routes
 app.get('/', function(req,res) {
